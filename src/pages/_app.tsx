@@ -4,7 +4,8 @@ import { type AppType } from "next/app";
 import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import Head from "next/head";
-import { SideNav } from "~/components/SideNav";
+import { MainNav } from "~/components/MainNav";
+import Footer from "~/components/Footer";
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
@@ -15,12 +16,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <title>twitter lokal</title>
         <meta name="description" content="payen rs40" />
       </Head>
-      <div className="container mx-auto flex items-start sm:pr-4">
-        <SideNav />
-        <div className="min-h-screen flex-grow border-x">
-          <Component {...pageProps} />
-        </div>
-      </div>
+      <MainNav />
+      <Component {...pageProps} />
+      <Footer />
     </SessionProvider>
   );
 };
