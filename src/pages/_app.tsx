@@ -13,8 +13,8 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <Head>
-        <title>twitter lokal</title>
-        <meta name="description" content="payen rs40" />
+        <title>Mo Contact</title>
+        <meta name="description" content="Mo Contact" />
       </Head>
       <MainNav />
       <Component {...pageProps} />
