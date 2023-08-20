@@ -76,20 +76,21 @@ export const todolistRouter = createTRPCRouter({
             })
             return { task: updateTask }
         }),
-    createDefaultTaskPriorities: protectedProcedure.mutation(async (ctx) => {
-        const tasks = await ctx.ctx.prisma.taskPriority.createMany({
-            data: [
-                { priorityId: 'veryLow', priority: 'Very low' },
-                { priorityId: 'low', priority: 'Low' },
-                { priorityId: 'medium', priority: 'Medium' },
-                { priorityId: 'high', priority: 'High' },
-                { priorityId: 'extemelyHigh', priority: 'Extemely high' },
-                { priorityId: 'critical', priority: 'Critical' }
-            ],
-            skipDuplicates: true,
-        });
-        return { tasks: tasks.count };
-    }),
+    //implement fixtures
+    // createDefaultTaskPriorities: protectedProcedure.input(z.object({ id: z.string() })).mutation(async (ctx) => {
+    //     const tasks = await ctx.ctx.prisma.taskPriority.createMany({
+    //         data: [
+    //             { priorityId: 'veryLow', priority: 'Very low' },
+    //             { priorityId: 'low', priority: 'Low' },
+    //             { priorityId: 'medium', priority: 'Medium' },
+    //             { priorityId: 'high', priority: 'High' },
+    //             { priorityId: 'extemelyHigh', priority: 'Extemely high' },
+    //             { priorityId: 'critical', priority: 'Critical' }
+    //         ],
+    //         skipDuplicates: true,
+    //     });
+    //     return { tasks: tasks.count };
+    // }),
     getDefaultTasks: protectedProcedure.query(async (ctx) => {
         const tasks = await ctx.ctx.prisma.taskPriority.findMany();
         return { tasks: tasks };
